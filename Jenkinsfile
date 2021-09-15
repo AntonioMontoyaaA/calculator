@@ -11,6 +11,16 @@ pipeline {
                     sh "./mvnw test"
                }
           }
+          stage("Package") {
+              steps {
+                sh "./mavnw compile"
+              }
+          }
+          stage("Docker build") {
+             steps {
+               sh "docker build -t antoniomontoyaa/calculator ."
+             }
+          }
      }
 }
 
